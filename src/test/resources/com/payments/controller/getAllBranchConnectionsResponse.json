@@ -1,0 +1,92 @@
+[
+  {
+    "originBranch": {
+      "name": "A",
+      "transferCost": 5
+    },
+    "destinationBranch": {
+      "name": "B",
+      "transferCost": 50
+    }
+  },
+  {
+    "originBranch": {
+      "name": "A",
+      "transferCost": 5
+    },
+    "destinationBranch": {
+      "name": "C",
+      "transferCost": 10
+    }
+  },
+  {
+    "originBranch": {
+      "name": "C",
+      "transferCost": 10
+    },
+    "destinationBranch": {
+      "name": "B",
+      "transferCost": 50
+    }
+  },
+  {
+    "originBranch": {
+      "name": "B",
+      "transferCost": 50
+    },
+    "destinationBranch": {
+      "name": "D",
+      "transferCost": 10
+    }
+  },
+  {
+    "originBranch": {
+      "name": "C",
+      "transferCost": 10
+    },
+    "destinationBranch": {
+      "name": "E",
+      "transferCost": 20
+    }
+  },
+  {
+    "originBranch": {
+      "name": "D",
+      "transferCost": 10
+    },
+    "destinationBranch": {
+      "name": "E",
+      "transferCost": 20
+    }
+  },
+  {
+    "originBranch": {
+      "name": "E",
+      "transferCost": 20
+    },
+    "destinationBranch": {
+      "name": "D",
+      "transferCost": 10
+    }
+  },
+  {
+    "originBranch": {
+      "name": "D",
+      "transferCost": 10
+    },
+    "destinationBranch": {
+      "name": "F",
+      "transferCost": 5
+    }
+  },
+  {
+    "originBranch": {
+      "name": "E",
+      "transferCost": 20
+    },
+    "destinationBranch": {
+      "name": "F",
+      "transferCost": 5
+    }
+  }
+]

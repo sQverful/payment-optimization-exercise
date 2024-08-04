@@ -1,0 +1,26 @@
+[
+  {
+    "name": "A",
+    "transferCost": 5
+  },
+  {
+    "name": "B",
+    "transferCost": 50
+  },
+  {
+    "name": "C",
+    "transferCost": 10
+  },
+  {
+    "name": "D",
+    "transferCost": 10
+  },
+  {
+    "name": "E",
+    "transferCost": 20
+  },
+  {
+    "name": "F",
+    "transferCost": 5
+  }
+]
