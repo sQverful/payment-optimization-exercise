@@ -1,5 +1,6 @@
 package com.payments.service;
 
+import jakarta.transaction.Transactional;
 import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +8,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import com.payments.exception.ErrorsException;
 import com.payments.model.ErrorResponse;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
 import static org.assertj.core.api.BDDAssertions.thenThrownBy;
 
 @SpringBootTest
-@ActiveProfiles("com")
+@ActiveProfiles("test")
+@Transactional
+@Sql(scripts = "/data.sql")
 class PaymentServiceTest {
 
     @Autowired

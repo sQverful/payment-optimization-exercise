@@ -23,7 +23,7 @@ import com.payments.service.BranchService;
 
 import java.util.List;
 
-@ActiveProfiles("com")
+@ActiveProfiles("test")
 @AutoConfigureJsonTesters
 @AutoConfigureMockMvc
 @WebMvcTest(BranchController.class)

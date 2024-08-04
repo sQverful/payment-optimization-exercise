@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
-@ActiveProfiles("com")
+@ActiveProfiles("test")
 class BranchRepositoryTest {
 
     @Autowired BranchRepository branchRepository;

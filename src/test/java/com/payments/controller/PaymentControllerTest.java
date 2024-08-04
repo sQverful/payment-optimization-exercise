@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ActiveProfiles("com")
+@ActiveProfiles("test")
 @AutoConfigureJsonTesters
 @AutoConfigureMockMvc
 @WebMvcTest(PaymentController.class)

@@ -1,9 +1,15 @@
 package com.payments.integration;
 
+import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import com.payments.service.PaymentService;
@@ -12,14 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
-@ActiveProfiles("com")
-@Sql({"/data.sql"})
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@ActiveProfiles("test")
 class PaymentServiceIntegrationTest {
-    @Autowired
-    private PaymentService paymentService;
+    @Autowired private PaymentService paymentService;
+
+    @Autowired private JdbcTemplate jdbcTemplate;
 
     @Test
+    @Sql(scripts = "/data.sql")
     void testProcessPaymentWithMultipleBranches() {;
         final var originBranch = "A";
         final var destinationBranch = "D";
@@ -28,4 +34,9 @@ class PaymentServiceIntegrationTest {
         assertEquals(expectedResult, actual);
     }
 
+    @AfterEach
+    void cleanUpDatabase() {
+        jdbcTemplate.execute("DELETE FROM branch_connection");
+        jdbcTemplate.execute("DELETE FROM branch");
+    }
 }

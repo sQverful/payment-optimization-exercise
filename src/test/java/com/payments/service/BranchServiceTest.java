@@ -27,7 +27,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-@ActiveProfiles("com")
+@ActiveProfiles("test")
 class BranchServiceTest {
 
     @MockitoBean
