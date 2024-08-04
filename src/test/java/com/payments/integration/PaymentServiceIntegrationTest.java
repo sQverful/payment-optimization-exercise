@@ -1,15 +1,10 @@
 package com.payments.integration;
 
-import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import com.payments.service.PaymentService;
@@ -26,7 +21,7 @@ class PaymentServiceIntegrationTest {
 
     @Test
     @Sql(scripts = "/data.sql")
-    void testProcessPaymentWithMultipleBranches() {;
+    void testProcessPaymentWithMultipleBranches() {
         final var originBranch = "A";
         final var destinationBranch = "D";
         final var expectedResult = "A,C,E,D";
