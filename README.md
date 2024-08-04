@@ -28,7 +28,7 @@ Branches charge to process payments. Any payment that leaves a branch is subject
 
 Your task is to develop a solution that is able to compute the cheapest way to make a payment between two branches.
 
-Full description: [Technical Exercise - Payment Optimization PDF](https://github.com/your-username/your-project/blob/master/docs/Technical_Exercise_-_Payment_Optimization.pdf).
+Full description: [Technical Exercise - Payment Optimization PDF](https://github.com/sQverful/payment-optimization-exercise/blob/main/Technical%20Exercise%20-%20Payment%20Optimization.pdf).
 
 ## Solution
 
