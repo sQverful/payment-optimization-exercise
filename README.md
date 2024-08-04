@@ -57,12 +57,12 @@ To run the application use the following commands:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/
+   git clone https://github.com/sQverful/payment-optimization-exercise.git
    ```
 
 2. **Navigate to the project directory:**
    ```bash
-   cd payment-optimization
+   cd payment-optimization-exercise
    ```
 
 3. **Compile, com & package:**
