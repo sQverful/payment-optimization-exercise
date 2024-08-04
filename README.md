@@ -37,6 +37,7 @@ Full description: [Technical Exercise - Payment Optimization PDF](https://github
 - **Java 17**:
 - **Maven 4.0.0 (compatible with Maven 3.x or higher)**
 - **Spring Boot 3.4.0**
+- **H2 database**
 
 ### Implementation notes
 
