@@ -13,6 +13,7 @@ import com.payments.repository.BranchConnectionsRepository;
 import com.payments.repository.BranchRepository;
 import com.payments.validator.BranchConnectionRequestValidator;
 import com.payments.validator.BranchValidator;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,23 +30,25 @@ public class BranchService {
     private final BranchConnectionRequestValidator branchConnectionRequestValidator;
     private final BranchValidator branchValidator;
 
+    @Transactional(readOnly = true)
     public List<Branch> getAllBranches() {
         final var branchEntities = branchRepository.findAll();
         return branchMapper.toBranches(branchEntities);
     }
-
+    @Transactional(readOnly = true)
     public List<BranchConnection> getAllBranchConnections() {
         final var branchConnectionEntities = branchConnectionsRepository.findAll();
         return branchConnectionMapper.toBranchConnections(branchConnectionEntities);
     }
 
+    @Transactional
     public Branch createBranch(@NonNull Branch branch) {
         passOrThrow(errors -> branchValidator.validate(branch, errors));
         final var branchEntity = branchMapper.toBranchEntity(branch);
         branchRepository.save(branchEntity);
         return branchMapper.toBranch(branchEntity);
     }
-
+    @Transactional
     public BranchConnection createBranchConnection(@NonNull BranchConnectionRequest request) {
         passOrThrow(errors -> branchConnectionRequestValidator.validate(request, errors));
         final var sourceBranchEntity = branchRepository.findByName(request.getOriginBranch())

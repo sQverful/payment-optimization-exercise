@@ -13,7 +13,7 @@ import com.payments.model.BranchConnection;
 import com.payments.repository.BranchConnectionsRepository;
 import com.payments.repository.BranchRepository;
 import com.payments.validator.PaymentValidator;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 import static com.payments.util.GraphUtil.buildDirectedBranchGraph;
@@ -31,6 +31,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final BranchConnectionMapper branchConnectionMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public String processPayment(@NonNull String originBranch,
                                  @NonNull String destinationBranch) {
         passOrThrow(errors -> paymentValidator.validate(originBranch, destinationBranch, errors));
