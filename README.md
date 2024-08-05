@@ -122,3 +122,6 @@ To run the application use the following commands:
            "destinationBranch": "D"
          }'
    ```
+**Bonus: Download the visualization image of payment connections**
+[http://localhost:8080/api/v1/payment/downloadGraphImage](http://localhost:8080/api/v1/payment/downloadGraphImage)
+

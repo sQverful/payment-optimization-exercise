@@ -1,12 +1,19 @@
 package com.payments.util;
 
+import com.mxgraph.layout.mxCircleLayout;
+import com.mxgraph.util.mxCellRenderer;
 import lombok.NonNull;
 import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
+import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.builder.GraphTypeBuilder;
 import com.payments.model.Branch;
 import com.payments.model.BranchConnection;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -44,4 +51,25 @@ public class GraphUtil {
                 .map(Branch::getName)
                 .collect(Collectors.joining(","));
     }
+
+    public static byte[] generateGraphImage(@NonNull Graph<Branch, BranchConnection> graph) throws IOException {
+        JGraphXAdapter<Branch, BranchConnection> graphAdapter = new JGraphXAdapter<>(graph);
+        final var layout = new mxCircleLayout(graphAdapter);
+        layout.execute(graphAdapter.getDefaultParent());
+        final var image = mxCellRenderer.createBufferedImage(
+                graphAdapter,
+                null,
+                2,
+                Color.WHITE,
+                false,
+                null
+        );
+        final var baos = new ByteArrayOutputStream();
+        ImageIO.write(image, "PNG", baos);
+        final var imgResult = baos.toByteArray();
+        baos.close();
+        return imgResult;
+    }
+
+
 }

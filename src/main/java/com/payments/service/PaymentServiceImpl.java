@@ -2,6 +2,7 @@ package com.payments.service;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
@@ -21,6 +22,7 @@ import static com.payments.util.GraphUtil.mapVertexPathToCsvFormat;
 import static com.payments.validator.Validator.passOrThrow;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
 
@@ -50,11 +52,9 @@ public class PaymentServiceImpl implements PaymentService {
         Graph<Branch, BranchConnection> graph = buildDirectedBranchGraph(branches, branchConnections);
 
         Optional<GraphPath<Branch, BranchConnection>> path = findCheapestPathBetweenBranches(graph, origin, destination);
-
         return path.map(mapVertexPathToCsvFormat())
                 .orElse(null);
     }
-
 
     private Optional<GraphPath<Branch, BranchConnection>> findCheapestPathBetweenBranches(
             @NonNull Graph<Branch, BranchConnection> graph,
